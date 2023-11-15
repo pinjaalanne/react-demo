@@ -65,7 +65,6 @@ h3 {
   width: 200px;
   background-color: #ae8baa;
   border-radius: 10px;
-  border: 3px solid #d7c2d5;
   box-shadow: 1.5px 1.5px 3px rgba(43, 3, 36, 0.807);
   padding: 2rem;
   margin: 1.5rem;
@@ -73,8 +72,8 @@ h3 {
 
 .card:hover {
   filter: saturate(90%);
+  border: 1px solid #d7c2d5;
   cursor: pointer;
-  border: none;
 }
 
 img {
@@ -110,12 +109,23 @@ button:focus-visible {
 }
 
 .old {
-  color: rgb(83, 27, 83);
+  color: rgb(139, 82, 109);
 }
 
 .young {
-  color: darkblue;
+  color: #7ebdb6;
 }
+
+input {
+  margin-top: 1rem;
+  border: none;
+  font-family: inherit;
+  padding: 0.3rem;
+  background: white;
+  color: #216a62;
+  border-radius: 2px;
+}
+
 
 
 /* @media (prefers-color-scheme: light) {

@@ -20,6 +20,13 @@ function App() {
     { id: 6, name: "Kalevi", title: "KAM", age: 35, number: "06" }
   ]);
 
+  const [search, setSearch] = useState('');
+
+  const searchHandler = (e) => {
+    setSearch(e.target.value);
+    console.log(e.target.value);
+  }
+
   const eventHandler = (name) => {
     setPersons(persons => {
       return persons.filter(person => person.name !== name)
@@ -34,12 +41,14 @@ function App() {
         <Greeting name="Pinja" />
         <h2>This is my Application</h2>
         <img src={image} alt="no img"></img>
-        <div className="cards">
-          {persons.map((person) => (
-            <Card key={person.id}
-              {...person}
-              click={() => eventHandler(person.name)}
-            />))}
+        <div>
+          <input type="text" onChange={searchHandler} placeholder="Search"></input>
+          <div className="cards">
+            {persons
+              .filter((person) => person.name.toLowerCase().includes(search.toLowerCase()))
+              .map((person) => <Card key={person.id} {...person}
+                click={() => eventHandler(person.name)} />)}
+          </div>
         </div>
         <button onClick={eventHandler}>Click!</button>
       </main >
