@@ -1,16 +1,14 @@
-import './App.css'
 import { useState } from 'react'
-import Card from './Card.jsx'
-import Header from './Header.jsx'
-import Footer from './Footer.jsx'
-import image from './assets/react.svg'
-
-
-function Greeting({ name }) {
-  return ((name === 'Pinja') ? <p> Welcome {name}!</p> : <p> Please log in!</p>)
-}
+import Home from './routes/Home.jsx';
+import Posts from './routes/Posts.jsx';
+import Persons from './routes/Persons.jsx';
+import About from './routes/About.jsx';
+import ErrorPage from './routes/ErrorPage'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Root from './routes/Root'
 
 function App() {
+
   const [persons, setPersons] = useState([
     { id: 1, name: "Pinja", title: "CEO", age: 31, number: "01" },
     { id: 2, name: "George", title: "CFO", age: 29, number: "02" },
@@ -34,25 +32,44 @@ function App() {
     console.log(name);
   }
 
+  const router = createBrowserRouter([
+    /*     {
+          path: '/auth', element: <AuthLayout />, children: [
+            { path: '/login', element: <LogIn /> }, {}]
+        }, */
+    {
+      path: '/', element: < Root />,
+      errorElement: <ErrorPage />,
+      children: [
+        { path: '/', element: < Home /> },
+        {
+          path: '/persons',
+          element: (
+            <Persons
+              searchHandler={searchHandler}
+              eventHandler={eventHandler}
+              search={search}
+              persons={persons}
+            />
+          )
+        },
+        { path: '/about', element: <About /> },
+        { path: '/posts', element: <Posts /> }
+      ]
+    }
+  ]);
+
   return (
     <>
-      <Header logo="Pinja Alanne" />
+      <RouterProvider router={router} />
+      {/* <Header logo="Pinja Alanne" />
       <main>
-        <Greeting name="Pinja" />
         <h2>This is my Application</h2>
         <img src={image} alt="no img"></img>
-        <div>
-          <input type="text" onChange={searchHandler} placeholder="Search"></input>
-          <div className="cards">
-            {persons
-              .filter((person) => person.name.toLowerCase().includes(search.toLowerCase()))
-              .map((person) => <Card key={person.id} {...person}
-                click={() => eventHandler(person.name)} />)}
-          </div>
         </div>
         <button onClick={eventHandler}>Click!</button>
       </main >
-      <Footer copyright="Copyright 2023" />
+      <Footer copyright="Copyright 2023" /> */}
     </>
   )
 }

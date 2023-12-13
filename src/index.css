@@ -28,6 +28,11 @@ footer {
   height: 55px;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
 body {
   text-align: center;
   min-width: 320px;
@@ -39,6 +44,7 @@ main {
 }
 
 h1 {
+  margin: 1rem;
   font-size: 3em;
   line-height: 1.1;
 }
@@ -52,28 +58,31 @@ h3 {
   padding: 1rem;
 }
 
-.cards {
+.cards,
+.posts {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 3rem 0;
+  margin: 1rem 0;
 }
 
-.card {
-  height: 160px;
+.card,
+.post {
+  height: 180px;
   width: 200px;
-  background-color: #ae8baa;
+  background-color: #99677e;
+  filter: saturate(70%);
   border-radius: 10px;
   box-shadow: 1.5px 1.5px 3px rgba(43, 3, 36, 0.807);
   padding: 2rem;
-  margin: 1.5rem;
+  margin: 1rem;
+  position: relative;
 }
 
 .card:hover {
-  filter: saturate(90%);
-  border: 1px solid #d7c2d5;
   cursor: pointer;
+  filter: none;
 }
 
 img {
@@ -90,42 +99,84 @@ button {
   font-family: inherit;
   background-color: #216a62;
   cursor: pointer;
-  transition: border-color 0.25s;
-  box-shadow: inset 0 0 2px rgba(12, 45, 24, 0.78);
+  transition: 0.25s;
+  box-shadow: inset 0 0 1px rgba(12, 45, 24, 0.78);
+  position: absolute;
+  bottom: 2%;
+  left: 47%;
+  transform: translate(-50%, 0%);
 }
 
 button:hover {
-  border-color: #ececf2ca;
+  background-color: #0d3b36;
 }
 
-button:focus,
+.completed {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: #b6e9e4;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 .close {
   font-size: 0.7rem;
   margin: 0.5rem;
 }
 
-.old {
+/* .old {
   color: rgb(139, 82, 109);
 }
 
 .young {
   color: #7ebdb6;
-}
+} */
 
 input {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  width: 160px;
   border: none;
   font-family: inherit;
   padding: 0.3rem;
   background: white;
   color: #216a62;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
+::placeholder {
+  font-size: 0.7rem;
+  font-family: inherit;
+  color: #0d3b36d2;
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: rgb(226, 190, 194);
+}
+
+a.active {
+  color: white;
+  border-bottom: 1px solid rgb(213, 183, 187);
+  color: rgb(213, 183, 187);
+}
 
 
 /* @media (prefers-color-scheme: light) {
